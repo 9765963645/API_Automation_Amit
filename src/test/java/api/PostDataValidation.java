@@ -23,15 +23,9 @@ public class PostDataValidation {
         ApiUtils.readAPIConfigs();
         ApiUtils.setBaseURL();
         String body = Files.readString(Path.of(System.getProperty("user.dir") + "/src/test/java/api_test_data/CreateUserBody.json"));
-//        System.out.println(body);
         String end_point=ApiUtils.api_config.getProperty("/users");
-//        System.out.println(end_point);
-//        Response response = ApiUtils.postRequest(end_point, body);
-//        System.out.println(response.getBody().asString());
-//       Assert.assertEquals(response.statusCode(),201,"status code mismatch");
          response = ApiUtils.postRequest(end_point,body);
-        int statuscode = response.getStatusCode();
-        System.out.println(statuscode);
+        Assert.assertEquals(response.statusCode(),201,"status code mismatch");
 
     }
 }
